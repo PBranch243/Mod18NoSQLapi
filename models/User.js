@@ -13,12 +13,10 @@ const UserSchema = new Schema({
         unique: true,
         //email validation needed.  research
     },
-    thoughts: {
-        //arrayof id values from the thought model
-    },
-    friends: {
-        //array of id values ref to user model
-    }
+    //arrayof id values from the thought model
+    thoughts: [],
+    //array of id values ref to user model
+    friends: []
 })
 
 //create the user model
