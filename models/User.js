@@ -14,10 +14,20 @@ const UserSchema = new Schema({
         //email validation needed.  research
     },
     //arrayof id values from the thought model
-    thoughts: [],
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ],
     //array of id values ref to user model
     friends: []
-})
+});
+
+//Virtual to get length of user's friends array
+UserSchema.virtual('friendCount').get(function(){
+    return this.friends.length;
+});
 
 //create the user model
 const User = model('User', UserSchema);
