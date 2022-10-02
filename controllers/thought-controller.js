@@ -43,6 +43,16 @@ const thoughtController = {
                 res.json(dbUserData);
             })
             .catch(err => res.json(err));
+    },
+    //Update a Thought
+    updateThought({ params, body }, res) {
+        Thought.findByIdAndUpdate({ _id: params.thoughtId }, body, { new: true })
+            .then(updatedThought => {
+                if(!updatedThought){
+                    return res.status(404).json({ message: 'No thought with this id!' });
+                }
+                res.json(updatedThought);
+            })
     }
 }
 
