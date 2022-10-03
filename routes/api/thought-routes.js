@@ -10,10 +10,11 @@ router.route('/:userId/:thoughtId').delete(removeThought);
 // /api/thoughts/<userId>/<thoughtId>
 router.route('/:userId/:thoughtId').put(updateThought);
 
-// /api/thoughts/<userId>/<thoughtId>/<reactionId>
-router.route('/:userId/:thoughtId/:reactionId').delete(removeReaction);
+// /api/thoughts/<thoughtId>/reactions
+router.route('/:thoughtId/reactions').post(addReaction);
 
-// /api/thoughts/<userId>/<thoughtId>/<reactionId>
-router.route('/:userId/:thoughtId/:reactionId').put(addReaction);
+// /api/thoughts//<thoughtId>/<reactionId>
+router.route('/:thoughtId/reactions').put(removeReaction);
+
 
 module.exports = router;
