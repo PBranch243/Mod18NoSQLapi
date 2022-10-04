@@ -11,7 +11,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        //email validation needed.  research
+        match: [
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+				"Please fill a valid email address"
+        ]
     },
     //arrayof id values from the thought model
     thoughts: [
