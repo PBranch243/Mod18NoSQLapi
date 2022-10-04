@@ -79,7 +79,25 @@ const thoughtController = {
         )
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => res.json(err));
-    }
+    },
+    //get all thoughts
+    getAllThought( req, res) {
+        Thought.find({})
+            .then(dbThoughtData => res.json(dbThoughtData))
+            .catch(err => res.json(err));
+    },
+    //get thought by id
+    getThoughtById({params}, res) {
+        Thought.findOne({ _id: params.thoughtId})
+            .then(dbThoughtData => {
+                if(!dbThoughtData){
+                    res.status(404).json({message: 'No thought with that id found'});
+                    return;
+                }
+                res.json(dbThoughtData);
+            }) 
+            .catch(err => res.json(err));
+    }       
 }
 
 module.exports = thoughtController;
